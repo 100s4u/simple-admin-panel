@@ -18,7 +18,7 @@
 		if($n>9){
 			foreach ($images as $i) {
 				$num += 1;
-				echo "<div value=\"$num\" class=\"image-view\">
+				echo "<div class=\"image-view num\">
 						<div class=\"image-view_container\">
 							<img class=\"image-view_img\" src=\"".$dir.$i."\">
 						</div>

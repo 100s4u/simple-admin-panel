@@ -2,7 +2,7 @@
 	require_once "config.php";
 	session_start();
 	if(isset($_POST['submit'])){
-		if($_POST['login'] == $login and $_POST['password']== $password){
+		if($_POST['login'] == $login and md5($_POST['password'])== $password){
 			$_SESSION['user'] = 'admin';
 			header("Location: index.php");
 		}

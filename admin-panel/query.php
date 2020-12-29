@@ -1,6 +1,6 @@
 <?php
-	require_once('config.php');
 	require_once "check.php";
+	require_once "config.php";
 	$connect = mysqli_connect($SERVER, $USER, $PASSWORD, $DB);
 	if($_POST['method'] == "add"){
 		$sql = "INSERT INTO `".$_POST['block']."` (`title`, `content`) VALUES (	'".$_POST['title']."', '".$_POST['text']."')";
@@ -32,7 +32,7 @@
 			echo "Error: " . $sql . "<br>" . mysqli_error($connect);
 		}
 	}
-	else if($_POST['method'] == "blockAdd"){
+	else if($_POST['method'] == "blockAdd" and strip_tags(preg_match_all("/[a-z, A-Z, \_, \-]{3,20}/",$_POST['nameBlock'])) <= 1){
 		$sql = "CREATE TABLE `".$_POST['nameBlock']."` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `title` TEXT NOT NULL , `content` TEXT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;";
 		if (mysqli_query($connect, $sql)){
 				echo "Блок успешно добавлен";

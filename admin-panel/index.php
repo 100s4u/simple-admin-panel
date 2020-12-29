@@ -3,7 +3,7 @@
 	require_once "header.php";
 	$connect = mysqli_connect($SERVER, $USER, $PASSWORD, $DB);
 ?>
-
+	<main>
 		<div class="row">
 		<div>
 			<?php
@@ -56,11 +56,11 @@
 						</div>";
 					}
 				?>
-				<form class="block-add" action="query.php" method="POST">
+				<div class="block-add">
 					<h1>Добавить блок</h1>
 					<input name="nameBlock" placeholder="Название блока" type="text">
 					<button class="block-add_button" name="method" value="blockAdd"></button>
-				</form>
+				</div>
 			</div>
 			<div class="image-add">
 				<h2>Изображения</h2>
@@ -72,6 +72,7 @@
 				<a class="images-add_button"><b>Добавить</b></a><br>
 			</div>
 		</div>
+	</main>
 <?php
 	require_once "footer.php";
 ?>

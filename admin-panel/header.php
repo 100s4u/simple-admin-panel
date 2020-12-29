@@ -18,4 +18,3 @@
 			<img class="header-icon logout" src="126466-multimedia-collection/svg/logout.svg">
 		</div>
 	</header>
-	<main>
