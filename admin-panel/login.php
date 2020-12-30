@@ -3,7 +3,7 @@
 	session_start();
 	if(isset($_POST['submit'])){
 		if($_POST['login'] == $login and password_verify($_POST['password'], $hash)){
-			$_SESSION['user'] = $login.":".$password;
+			$_SESSION['user'] = $login.":".$hash;
 			header("Location: index.php");
 		}
 	}
