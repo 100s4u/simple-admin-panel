@@ -11,7 +11,7 @@
 		}
 		$fname = $_FILES["file"]["name"];
 		$ftmp_name = $_FILES["file"]["tmp_name"];
-		$n = count(preg_grep("/^.{1,}\..{1,}/", array_diff(scandir(UPLOAD_DIR), [".", ".."])));
+		$n = count(preg_grep("/^.{1,}\..{1,}/", array_diff(scandir(UPLOAD_DIR.$dir), [".", ".."])));
 		for ($i = 0; $i < count($ftmp_name); $i++){
 			if(is_uploaded_file($ftmp_name[$i])) {
 				$name = explode(".",$fname[$i]);
