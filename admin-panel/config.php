@@ -1,6 +1,6 @@
 <?php
 $login="";
-$password=md5("");
+$hash="";
 $USER="";
 $PASSWORD="";
 $SERVER="";

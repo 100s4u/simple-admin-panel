@@ -9,14 +9,15 @@
 		else{
 			$dir = '';
 		}
-		$fname = $_FILES["file"]["name"];
+		$types = ["jpeg", "png", "jpg"];
 		$ftmp_name = $_FILES["file"]["tmp_name"];
 		$n = count(preg_grep("/^.{1,}\..{1,}/", array_diff(scandir(UPLOAD_DIR.$dir), [".", ".."])));
 		for ($i = 0; $i < count($ftmp_name); $i++){
-			if(is_uploaded_file($ftmp_name[$i])) {
-				$name = explode(".",$fname[$i]);
+			$fname = explode(".", $_FILES["file"]["name"][$i]);
+			$exp = end($fname);
+			if(in_array($exp, $types)){
 				$num = $i+$n;
-				move_uploaded_file($ftmp_name[$i], UPLOAD_DIR.$dir."img".$num.".".end($name));
+				move_uploaded_file($ftmp_name[$i], UPLOAD_DIR.$dir."img".$num.".".$exp);
 			}
 		}
 	}
@@ -29,7 +30,7 @@
 	<link rel="stylesheet" href="style.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
-	<title><?=$title?></title>
+	<title>Загрузить изображения</title>
 </head>
 <body>
 	<form class="upload_form" action="upload.php" method="post" multipart="" enctype="multipart/form-data">
@@ -48,7 +49,7 @@
 			?>
 		</select>
 		<input class="upload_select_file" type="file" name="file[]" multiple>
-		<input class="load" type="submit" name="submit" value="загрузить">
+		<input class="load" type="submit" name="submit" value="Загрузить">
 	</form>
 </body>
 </html>

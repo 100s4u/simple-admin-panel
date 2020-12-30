@@ -37,17 +37,17 @@
 					$content=$row['content'];
 					echo"<div class=\"article\">
 							<div class=\"article-content\">
-								<h2>$title</h2>
+								<h2>".strip_tags(mb_strimwidth($title, 0, 250, "..."))."</h2>
 								<p>".strip_tags(mb_strimwidth($content, 0, 250, "..."))."</p>
 									<form class=\"post-edit\" action=\"post-edit.php\" method=\"POST\">
-										<input hidden name=\"block\" value=\"$rowDB[0]\">
-										<input hidden name=\"id\" value=\"$id\">
+										<input hidden name=\"block\" value=\"{$rowDB[0]}\">
+										<input hidden name=\"id\" value=\"{$id}\">
 										<button name=\"method\" value=\"edit\"><h2>Редактировать</h2></button>
 									</form>
 							</div>
 								<div class=\"post-del\">
-									<input hidden name=\"block\" value=\"$rowDB[0]\">
-									<input hidden name=\"id\" value=\"$id\">
+									<input hidden name=\"block\" value=\"{$rowDB[0]}\">
+									<input hidden name=\"id\" value=\"{$id}\">
 									<button name=\"method\" value=\"del\"></button>
 								</div>
 							</div>";

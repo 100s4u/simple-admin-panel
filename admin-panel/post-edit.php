@@ -11,7 +11,7 @@
 		}
 		else{
 			$title = "Редактировать пост";
-			$sql = "SELECT * FROM ".$_POST['block']." WHERE id='".$_POST['id']."'";
+			$sql = "SELECT * FROM {$_POST['block']} WHERE id='{$_POST['id']}'";
 			$result = mysqli_query($connect, $sql) or die("Ошибка " . mysqli_error($connect)); 
 			$rows = mysqli_num_rows($result);
 			for($i = 0 ; $i < $rows ; ++$i){
@@ -37,7 +37,7 @@
 		<h1><?=$title?></h1>
 		<?php
 			if($_POST['method'] != "add"){
-				echo "<input hidden name=\"id\" value=\"".$_POST['id']."\">";
+				echo "<input hidden name=\"id\" value=\"{$_POST['id']}\">";
 			}
 			else{
 				echo "<input hidden name=\"id\" value=\"\">";
