@@ -9,13 +9,14 @@
 		else{
 			$dir = '';
 		}
-		$types = ["jpeg", "png", "jpg"];
+		$types = ["image/jpeg", "image/png", "image/jpg"];
 		$ftmp_name = $_FILES["file"]["tmp_name"];
 		$n = count(preg_grep("/^.{1,}\..{1,}/", array_diff(scandir(UPLOAD_DIR.$dir), [".", ".."])));
 		for ($i = 0; $i < count($ftmp_name); $i++){
-			$fname = explode(".", $_FILES["file"]["name"][$i]);
+			$type = $_FILES["file"]["type"][$i];
+			$fname = explode("/", $_FILES["file"]["type"][$i]);
 			$exp = end($fname);
-			if(in_array($exp, $types)){
+			if(in_array($type, $types)){
 				$num = $i+$n;
 				move_uploaded_file($ftmp_name[$i], UPLOAD_DIR.$dir."img".$num.".".$exp);
 			}
