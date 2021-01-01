@@ -9,6 +9,7 @@
 		else{
 			$dir = '';
 		}
+		ini_set('upload_max_filesize', '400M');
 		$types = ["image/jpeg", "image/png", "image/jpg"];
 		$ftmp_name = $_FILES["file"]["tmp_name"];
 		$n = count(preg_grep("/^.{1,}\..{1,}/", array_diff(scandir(UPLOAD_DIR.$dir), [".", ".."])));
