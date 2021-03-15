@@ -1,9 +1,10 @@
 <?php
 	require_once "config.php";
+	//Creating a session
 	session_start();
 	if(isset($_POST['submit'])){
-		if($_POST['login'] == $login and md5($_POST['password'])== $password){
-			$_SESSION['user'] = 'admin';
+		if($_POST['login'] == $login and password_verify($_POST['password'], $hash)){
+			$_SESSION['user'] = $login.":".$hash;
 			header("Location: index.php");
 		}
 	}
@@ -21,10 +22,10 @@
 <body>
 	<div class="row-login_form">
 		<form class="login_form" method="post">
-			<h1>Авторизуйтесь для работы с панелью</h1>
+			<h1>Log in to work with the panel</h1>
 			<input type="text" name="login" placeholder="login">
 			<input type="password" name="password" placeholder="password">
-			<input type="submit" name="submit" value="Войти">
+			<input type="submit" name="submit" value="Login">
 		</form>
 	</div>
 </body>

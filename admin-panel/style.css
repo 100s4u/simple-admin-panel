@@ -247,6 +247,7 @@ footer *{
 }
 .article-content{
 	width: 90%;
+	overflow-wrap: break-word;
 }
 .post-edit button{
 	border: none;
