@@ -3,6 +3,9 @@
 	</footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script type="text/javascript">
+
+		/*Button Handler*/
+
 		$(document).ready( function(){
 			$('.images-add_button').click(function(event){
 				let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=500,height=260,left=500,top=200`;
@@ -16,7 +19,7 @@
 				open('/');
 			});
 			$('.logout').click(function(event){
-				if (confirm('Вы уверены?')){
+				if (confirm('Are you sure?')){
 					$.ajax({
 						type:'POST',
 						data:{method:'logout'},
@@ -28,7 +31,7 @@
 				}
 			});
 			$('.block-del').click(function(event){
-				if (confirm('Вы уверены что хотите удалить этот блок?')){
+				if (confirm('Are you sure you want to delete this block?')){
 					var block = $(this).children('input').val();
 					$.ajax({
 						type:'POST',
@@ -52,11 +55,11 @@
 						});
 					}
 					else {
-						alert('Название не валидно');
+						alert('The name is not valid');
 					}
 			});
 			$('.post-del').click(function(event){
-				if (confirm('Вы уверены что хотите удалить этот пост?')){
+				if (confirm('Are you sure you want to delete this post?')){
 					var block = $(this).children('[name=block]').val();
 					var id = $(this).children('[name=id]').val();
 					$.ajax({
@@ -67,6 +70,9 @@
 					$(this).closest(".article").hide(500);
 				}
 			});
+
+			/*In addition to this, it displays the number of images if there are more than 9*/
+
 			$('.num').last().prepend("<div class=\"image-info\"><h1>+<?=$n-9?></h1></div>");
 		});
 	</script>
