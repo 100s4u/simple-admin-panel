@@ -1,7 +1,9 @@
 <?php
-$login="";
-$password=md5("");
-$USER="";
-$PASSWORD="";
-$SERVER="";
-$DB="";
+	//Login and password to log in to the panel
+	$login="";
+	$hash="";
+	//Data for connecting to DB
+	$USER="";
+	$PASSWORD="";
+	$SERVER="";
+	$DB="";

@@ -7,6 +7,11 @@
 			$_SESSION['user'] = $login.":".$hash;
 			header("Location: index.php");
 		}
+		else{
+			var_dump($_POST['password']);
+			var_dump($hash);
+			var_dump(password_verify($_POST['password'], $hash));
+		}
 	}
 ?>
 <!DOCTYPE html>
